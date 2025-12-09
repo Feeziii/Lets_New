@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happiest Birthday Mamey</title>
+</body>
+</html>
+<!-- Page 1: Title Card -->
+<section class="page" id="page1">
+  <div class="title">
+    <h1>Happiest Birthday Kalai</h1>
+    <p>Wishing you joy, warmth, and love today and always.</p>
+    <a href="#page2" class="nav-button">See Memories</a>
+</section>
+
+<!-- Page 2: Gallery -->
+<section class="page" id="page2">
+  <h2>Memories Gallery</h2>
+  <div class="gallery">
+    <!-- Replace with your actual image paths -->
+    <img src="images/pic1.jpg" alt="">
+    <img src="images/pic2.jpg" alt="">
+    <img src="images/pic3.jpg" alt="">
+    <img src="images/pic4.jpg" alt="">
+    <img src="images/pic5.jpg" alt="">
+    <img src="images/pic6.jpg" alt="">
+    <img src="images/pic7.jpg" alt="">
+    <img src="images/pic8.jpg" alt="">
+    <img src="images/pic9.jpg" alt="">
+    <img src="images/pic10.jpg" alt="">
+    <img src="images/pic11.jpg" alt="">
+    <img src="images/pic12.jpg" alt="">
+    <img src="images/pic13.jpg" alt="">
+    <img src="images/pic14.jpg" alt="">
+  
+  </div>
+
+<!-- Petals container -->
+<div class="petals" id="petals"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Brush Script MT', cursive, sans-serif;
+    background: #d70b0bf3; /* deep pink/magenta */
+    color: white;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .petals {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .title h1 {
+    font-size: 3em;
+    margin: 0;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .title p {
+    margin-top: 10px;
+    font-size: 1.2em;
+  }
+  
+.nav-button {
+  margin-top: 20px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.nav-button:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 40px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+  /* Petal styles */
+  .petal {
+    position: absolute;
+    top: -10vh;
+    width: var(--size, 18px);
+    height: calc(var(--size, 18px) * 1.6);
+    background: radial-gradient(35% 35% at 40% 35%, rgba(255,255,255,0.95), rgba(255,182,193,0.65));
+    border-radius: 60% 40% 70% 30% / 60% 40% 70% 30%;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+    opacity: var(--opacity, 0.9);
+    transform: translateX(var(--startX, 0)) rotate(var(--rotStart, 0deg));
+    animation:
+      fall var(--fallDur, 9s) linear var(--delay, 0s) forwards,
+      sway var(--swayDur, 5s) ease-in-out var(--delay, 0s) infinite alternate,
+      spin var(--spinDur, 6s) ease-in-out var(--delay, 0s) infinite alternate;
+  }
+
+  .petal::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 18%;
+    width: 28%;
+    height: 64%;
+    border-left: 1px solid rgba(255,255,255,0.35);
+    transform: rotate(6deg);
+    filter: blur(0.2px);
+  }
+
+  @keyframes fall {
+    to {
+      transform: translate3d(var(--endX, 0), 105vh, 0) rotate(var(--rotEnd, 360deg));
+    }
+  }
+
+  @keyframes sway {
+    from { margin-left: -2.5vw; }
+    to   { margin-left: 2.5vw; }
+  }
+
+  @keyframes spin {
+    from { rotate: -10deg; }
+    to   { rotate: 12deg; }
+  }
+  .next-button {
+      display: inline-block;
+      margin-top: 50px;
+      padding: 12px 24px;
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      background-color: #28a745;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    .next-button:hover {
+      background-color: #218838;
+    }
+
+    .page-end {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    .king img {
+    width: 500px;
+    height: auto;
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    }
+    .king img:hover {
+    transform: scale(1.05);
+    }
+
+    .touch-btn {
+  background: linear-gradient(135deg, #6ed434, #d3d927);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.touch-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #fcb045, #fd1d1d);
+}
+
+.video-section {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.video-section video {
+  border-radius: 40px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  max-width: 100%;
+  height: auto;
+}
+</style>
+</head>
+<body>
+
+<!-- Page 1 -->
+<section class="page" id="page1">
+  <div class="title">
+    <h1>Once Again</h1>
+    <h2>Happiest Birthday Mr.Kalai Selvan</h2>
+    <p>Wishing you joy, Always keep you Smile</p>
+  </div>
+</section>
+
+<div class="king">
+  <img src="images/King.jpg" alt="Birthday Cake" />
+  <img src="images/MD.jpg" alt="Birthday Cake" />
+</div>
+
+<!-- Petals container -->
+<div class="petals" id="petals"></div>
+
+<script>
+const PETAL_COUNT = 35;
+const PETAL_SPAWN_INTERVAL = 600;
+const container = document.getElementById('petals');
+let active = 0;
+
+function rand(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function pickEdgeX() {
+  const vw = window.innerWidth;
+  return Math.random() < 0.7 ? rand(vw * 0.1, vw * 0.9) : rand(0, vw);
+}
+
+function makePetal() {
+  if (active >= PETAL_COUNT) return;
+
+  const petal = document.createElement('div');
+  petal.className = 'petal';
+
+  const size = rand(12, 26);
+  const fallDur = rand(7, 12);
+  const swayDur = rand(4, 7);
+  const spinDur = rand(5, 8);
+  const delay = rand(0, 2);
+  const startX = pickEdgeX();
+  const drift = rand(-120, 120);
+  const rotStart = rand(-20, 20);
+  const rotEnd = rotStart + rand(140, 320);
+  const opacity = rand(0.55, 0.95);
+
+  petal.style.setProperty('--size', `${size}px`);
+  petal.style.setProperty('--fallDur', `${fallDur}s`);
+  petal.style.setProperty('--swayDur', `${swayDur}s`);
+  petal.style.setProperty('--spinDur', `${spinDur}s`);
+  petal.style.setProperty('--delay', `${delay}s`);
+  petal.style.setProperty('--startX', `${startX}px`);
+  petal.style.setProperty('--endX', `${startX + drift}px`);
+  petal.style.setProperty('--rotStart', `${rotStart}deg`);
+  petal.style.setProperty('--rotEnd', `${rotEnd}deg`);
+  petal.style.setProperty('--opacity', opacity.toFixed(2));
+
+  // slight color variation
+  const pinkness = Math.random();
+  const baseWhite = `rgba(255,255,255,${0.9 - pinkness * 0.2})`;
+  const basePink  = `rgba(255,${182 + Math.floor(pinkness * 30)},193,${0.65 + pinkness * 0.2})`;
+  petal.style.background = `radial-gradient(35% 35% at 40% 35%, ${baseWhite}, ${basePink})`;
+
+  petal.addEventListener('animationend', () => {
+    if (petal.parentNode) {
+      container.removeChild(petal);
+      active--;
+    }
+  });
+
+  container.appendChild(petal);
+  active++;
+}
+
+setInterval(makePetal, PETAL_SPAWN_INTERVAL);
+</script>
+
+<script>
+  function playBirthdayVideo() {
+    const section = document.getElementById("videoSection");
+    const video = document.getElementById("birthdayVideo");
+    section.style.display = "block";
+    video.play();
+  }
+</script>
+
+</head>
+<body>
+
+<section class="page" id="page1">
+  <div class="title">
+    <p>"Vaanagam Da Mapula"</p> 
+    <h2> One small video waiting For You </h2>
+    <p> Let's Touch me </p>
+   
+  </div>
+</section>
+
+<div class="king">
+  <img src="images/Soul.jpg" alt="Birthday Cake" />
+</div>
+
+<!-- Touch ME Button -->
+<button class="touch-btn" onclick="playBirthdayVideo()">Touch ME</button>
+
+<!-- Hidden Video Section -->
+<div id="videoSection" style="display: none; text-align: center; margin-top: 30px;">
+  <video id="birthdayVideo" width="600" controls>
+    <source src="videos/birthday-surprise.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<div class="page-end">
+    <a href="index.html" class="next-button">Don't Touch me</a>
+</div>
+
+</body>
+</html>
